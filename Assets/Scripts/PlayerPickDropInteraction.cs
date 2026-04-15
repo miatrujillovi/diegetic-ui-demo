@@ -10,11 +10,19 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private Coroutine actionRoutine;
 
+    //DEBUGGING PURPOSES--------------------------------------
+    [Header("Debugging")]
+    [SerializeField] private bool activateDebugs;
+    private string debugName = "[PickDrop]";
+
     private void OnTriggerEnter(Collider other)
     {
+        DebugManager.instance.Log("Entered trigger: {other.name}", activateDebugs, debugName);
+
         PickUpObject obj = other.GetComponent<PickUpObject>();
         if (obj != null)
         {
+            DebugManager.instance.Log("Found pickup object: {other.name}", activateDebugs, debugName);
             currentObject = obj;
             StartPickUp();
         }
@@ -22,6 +30,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
         DropZone zone = other.GetComponent<DropZone>();
         if (zone != null)
         {
+            DebugManager.instance.Log("Entered drop zone: {other.name}", activateDebugs, debugName);
             currentZone = zone;
             StartDrop();
         }
@@ -29,14 +38,18 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        DebugManager.instance.Log("Exited trigger: {other.name}", activateDebugs, debugName);
+
         if (other.GetComponent<PickUpObject>() != null)
         {
+            DebugManager.instance.Log("Left pickup object range... Canceling action", activateDebugs, debugName);
             CancelAction();
             currentObject = null;
         }
 
         if (other.GetComponent<DropZone>() != null)
         {
+            DebugManager.instance.Log("Left drop zone.. canceling action", activateDebugs, debugName);
             CancelAction();
             currentZone = null;
         }
@@ -44,7 +57,19 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private void StartPickUp()
     {
-        if (currentObject == null || currentObject.IsHeld()) return;
+        if (currentObject == null)
+        {
+            DebugManager.instance.LogError("StartPickUp failed: no current object", activateDebugs, debugName);
+            return;
+        }
+
+        if (currentObject.IsHeld())
+        {
+            DebugManager.instance.Log("StartPickUp aborted: object already held", activateDebugs, debugName);
+            return;
+        }
+
+        DebugManager.instance.Log("Starting pickup: {currentObject.name}", activateDebugs, debugName);
 
         CancelAction();
         actionRoutine = StartCoroutine(PickUpAfterDelay());
@@ -52,7 +77,25 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private void StartDrop()
     {
-        if (currentObject == null || !currentObject.IsHeld() || currentZone == null) return;
+        if (currentObject == null)
+        {
+            DebugManager.instance.LogError("StartDrop failed: no current object", activateDebugs, debugName);
+            return;
+        }
+
+        if (currentZone == null)
+        {
+            DebugManager.instance.LogError("StartDrop failed: no drop zone", activateDebugs, debugName);
+            return;
+        }
+
+        if (!currentObject.IsHeld())
+        {
+            DebugManager.instance.Log("StartDrop aborted: object not held", activateDebugs, debugName);
+            return;
+        }
+
+        DebugManager.instance.Log("Starting drop into: {currentZone.name}", activateDebugs, debugName);
 
         CancelAction();
         actionRoutine = StartCoroutine(DropAfterDelay());
@@ -60,13 +103,21 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     IEnumerator PickUpAfterDelay()
     {
+        DebugManager.instance.Log("Pickup coroutine started ({currentObject.pickUpTime}s)", activateDebugs, debugName);
+
         yield return new WaitForSeconds(currentObject.pickUpTime);
+
+        DebugManager.instance.Log("Pickup completed", activateDebugs, debugName);
         currentObject.TryPickUp(holdPoint);
     }
 
     IEnumerator DropAfterDelay()
     {
+        DebugManager.instance.Log("Drop coroutine started ({currentObject.dropTime}s)", activateDebugs, debugName);
+
         yield return new WaitForSeconds(currentObject.dropTime);
+
+        DebugManager.instance.Log("Drop completed", activateDebugs, debugName);
         currentObject.TryDrop(currentZone);
     }
 
@@ -74,7 +125,9 @@ public class PlayerPickDropInteraction : MonoBehaviour
     {
         if (actionRoutine != null)
         {
-            StartCoroutine("actionRoutine");
+            DebugManager.instance.Log("Canceling current action", activateDebugs, debugName);
+
+            StopCoroutine(actionRoutine);
             actionRoutine = null;
         }
     }
