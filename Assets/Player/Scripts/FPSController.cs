@@ -128,6 +128,7 @@ public class FPSController : MonoBehaviour
 
     void Move()
     {
+
         bool isTryingToSprint = isSprinting && moveInput.y > 0 && canSprint && !isCrouching;
 
         float currentSpeed = isCrouching ? crouchSpeed : (isTryingToSprint ? sprintSpeed : speed);
@@ -135,7 +136,15 @@ public class FPSController : MonoBehaviour
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * currentSpeed * Time.deltaTime);
 
-      
+        // Detectar si se está moviendo
+        float inputMagnitude = new Vector2(moveInput.x, moveInput.y).magnitude;
+
+        // Normalizar velocidad (para que sprint llegue a 1)
+        float normalizedSpeed = isTryingToSprint ? inputMagnitude : inputMagnitude * 0.5f;
+
+        // Enviar al Animator
+        animator.SetFloat("Speed", normalizedSpeed);
+
     }
     void Look()
     {

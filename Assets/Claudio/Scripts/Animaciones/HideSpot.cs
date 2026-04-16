@@ -9,27 +9,25 @@ public class HideSpot : MonoBehaviour
     {
         Animator anim = player.GetComponentInChildren<Animator>();
 
-        if (anim == null)
-        {
-            Debug.LogError("No se encontró Animator en el jugador.");
-            return;
-        }
-
         if (!isPlayerInside)
         {
-            // ENTRAR
+            // --- ENTRAR AL ESCONDITE ---
             isPlayerInside = true;
             anim.SetTrigger(datos.triggerAnimacion);
 
-            // Bloqueamos movimiento manual para que la animación tome el control
+            // Bloqueamos el movimiento y la vista
             player.canLook = false;
-            // Podrías desactivar el CharacterController aquí si la animación mueve la raíz
+            // Desactivamos el CharacterController para que no interfiera con la animación
+            player.GetComponent<CharacterController>().enabled = false;
         }
         else
         {
-            // SALIR
+            // --- SALIR DEL ESCONDITE ---
             isPlayerInside = false;
             anim.SetTrigger(datos.triggerSalida);
+
+            // Devolvemos el control
+            player.GetComponent<CharacterController>().enabled = true;
             player.canLook = true;
         }
 
