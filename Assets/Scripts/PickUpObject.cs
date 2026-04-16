@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    [SerializeField] public float pickUpTime = 2f;
-    [SerializeField] public float dropTime = 2f;
-    [SerializeField] public ObjectZoneManager.RitualObjects ritualObjectType;
+    [Header("Pick Up Characteristics")]
+    [SerializeField, Tooltip("How much does it take to pick up the object?")] public float pickUpTime = 2f;
+    [SerializeField, Tooltip("How much does it take to drop the object?")] public float dropTime = 2f;
+    [SerializeField, Tooltip("Type of object")] public ObjectZoneManager.RitualObjects ritualObjectType;
 
     private Transform selectedDropPoint;
 
@@ -15,8 +16,9 @@ public class PickUpObject : MonoBehaviour
 
     private Transform holdPoint; //Transform inside the player on where he holds the object
 
-    public static Action<ObjectZoneManager.RitualObjects> OnObjectDropped;
+    public static Action<ObjectZoneManager.RitualObjects> OnObjectDropped; //Suscriptions: ObjectZoneManager.cs
 
+    #region PickUps
     public void TryPickUp(Transform _playerHoldPoint)
     {
         if (isBeingHeld || isPlaced) return;
@@ -35,6 +37,9 @@ public class PickUpObject : MonoBehaviour
 
     }
 
+    #endregion PickUps
+
+    #region Drops
     public void TryDrop(DropZone _zone)
     {
         if (!isBeingHeld) return;
@@ -56,7 +61,9 @@ public class PickUpObject : MonoBehaviour
 
         OnObjectDropped?.Invoke(ritualObjectType);
     }
+    #endregion Drops
 
+    //From the currentObject, selects corresponding area to locate
     private void SelectDropPoint(DropZone _zone)
     {
         switch (ritualObjectType)
@@ -91,6 +98,7 @@ public class PickUpObject : MonoBehaviour
         }
     }
 
+    //Is an Object being held? Verification
     public bool IsHeld()
     {
         return isBeingHeld;

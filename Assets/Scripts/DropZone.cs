@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class DropZone : MonoBehaviour
 {
-    public Transform light1DropPoint;
-    public Transform light2DropPoint;
-    public Transform light3DropPoint;
-    public Transform light4DropPoint;
-    public Transform bibleDropPoint;
-    public Transform swordDropPoint;
+    [Header("Drop Points")]
+    [Tooltip("Transform of Light 1 Drop Point")] public Transform light1DropPoint;
+    [Tooltip("Transform of Light 2 Drop Point")] public Transform light2DropPoint;
+    [Tooltip("Transform of Light 3 Drop Point")] public Transform light3DropPoint;
+    [Tooltip("Transform of Light 4 Drop Point")] public Transform light4DropPoint;
+    [Tooltip("Transform of Bible Drop Point")] public Transform bibleDropPoint;
+    [Tooltip("Transform of Sword Drop Point")] public Transform swordDropPoint;
 }

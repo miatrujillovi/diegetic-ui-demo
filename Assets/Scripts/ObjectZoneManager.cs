@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class ObjectZoneManager : MonoBehaviour
 {
-    //DEBUGGING PURPOSES--------------------------------------
+    //DEBUGGING PURPOSES---------------------------------------------
     [Header("Debugging")]
-    [SerializeField] private bool activateDebugs;
+    [SerializeField, Tooltip("Should Debug.Logs of this script show on console?")] private bool activateDebugs;
     private string debugName = "[RitualManager]";
 
     private HashSet<RitualObjects> collectedObjects = new HashSet<RitualObjects>(); //HashSet doesn't allow duplicates
 
+    //Current Game Objects
     public enum RitualObjects 
     { 
         Light1,
@@ -20,6 +21,7 @@ public class ObjectZoneManager : MonoBehaviour
         Sword
     }
 
+    #region Suscriptions
     private void OnEnable()
     {
         PickUpObject.OnObjectDropped += AddObjectToRitual;
@@ -29,6 +31,8 @@ public class ObjectZoneManager : MonoBehaviour
     {
         PickUpObject.OnObjectDropped -= AddObjectToRitual;
     }
+
+    #endregion Suscriptions
 
     private void AddObjectToRitual(RitualObjects _object)
     {

@@ -1779,6 +1779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPickDropInteraction
   holdPoint: {fileID: 1479116498}
+  timerDecay: 0.5
   activateDebugs: 0
 --- !u!65 &1904427682
 BoxCollider:

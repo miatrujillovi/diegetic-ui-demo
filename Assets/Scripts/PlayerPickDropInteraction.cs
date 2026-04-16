@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class PlayerPickDropInteraction : MonoBehaviour
 {
-    [SerializeField] private Transform holdPoint;
-    [SerializeField] private float timerDecay = 0.5f;
+    [Header("Player Object Interaction")]
+    [SerializeField, Tooltip("Transform inside Player where the object is to be placed")] private Transform holdPoint;
+    [SerializeField, Tooltip("Multiplier of how fast the timer will decay outside of the trigger zone of the object")] private float timerDecay = 0.5f;
+    [Space]
 
-    //OBJECT LOGIC VARIABLES-----------------------------
+    //OBJECT LOGIC VARIABLES-----------------------------------------------------------
     private PickUpObject currentObject;
     private DropZone currentZone;
 
     private bool isHoldingObject = false;
 
-    //TIMER LOGIC VARIABLES--------------------------------
-    //private UniTask actionRoutine;
+    //TIMER LOGIC VARIABLES------------------------------------------------------------
     private float progress = 0f;
     private float targetTime = 0f;
 
@@ -24,11 +25,12 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private CancellationTokenSource cts;
 
-    //DEBUGGING PURPOSES--------------------------------------
+    //DEBUGGING PURPOSES---------------------------------------------------------------
     [Header("Debugging")]
-    [SerializeField] private bool activateDebugs;
+    [SerializeField, Tooltip("Should Debug.Logs of this script show on console?")] private bool activateDebugs;
     private string debugName = "[PickDrop]";
 
+    //OnEnterTrigger and OnExitTrigger Logic-------------------------------------------
     #region Triggers
     private void OnTriggerEnter(Collider other)
     {
@@ -78,6 +80,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     #endregion Triggers
 
+    //Functions to Verify and Start the Pick and Drop of Objects-----------------------
     #region StartFunctions
 
     private void StartPickUp()
@@ -134,8 +137,10 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     #endregion StartFunctions
 
+    //Async functions that control the timing of the Picks and Drops-------------------
     #region TimerControl
 
+    //Main Timer Function
     async UniTaskVoid ActionLoop()
     {
         cts = new CancellationTokenSource();
@@ -157,6 +162,8 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
                 progress = Mathf.Clamp(progress, 0f, targetTime);
 
+                DebugManager.instance.Log(progress.ToString(), activateDebugs, debugName);
+
                 if (progress >= targetTime)
                 {
                     CompleteAction();
@@ -170,34 +177,14 @@ public class PlayerPickDropInteraction : MonoBehaviour
         catch (OperationCanceledException) { }
     }
 
-    /*async UniTask PickUpAfterDelay()
-    {
-        DebugManager.instance.Log($"Pickup coroutine started ({currentObject.pickUpTime}s)", activateDebugs, debugName);
-
-        await UniTask.Delay(TimeSpan.FromSeconds(currentObject.pickUpTime));
-
-        DebugManager.instance.Log("Pickup completed", activateDebugs, debugName);
-        isHoldingObject = true;
-        currentObject.TryPickUp(holdPoint);
-    }
-
-    async UniTask DropAfterDelay()
-    {
-        DebugManager.instance.Log($"Drop coroutine started ({currentObject.dropTime}s)", activateDebugs, debugName);
-
-        await UniTask.Delay(TimeSpan.FromSeconds(currentObject.dropTime));
-
-        DebugManager.instance.Log("Drop completed", activateDebugs, debugName);
-        isHoldingObject = false;
-        currentObject.TryDrop(currentZone);
-    }*/
-
+    //Stars reducing time on the timer
     void CancelAction()
     {
         isActive = false;
         isReversing = true;
     }
 
+    //Puts 0 on the main timer after completion
     void CompleteAction()
     {
         if (!isHoldingObject)
@@ -212,6 +199,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
         }
     }
 
+    //Starts the loop of the new timer.
     void StartLoopIfNeeded()
     {
         if (cts == null || cts.IsCancellationRequested)
@@ -220,6 +208,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
         }
     }
 
+    //Stops all timers.
     void StopAll()
     {
         cts?.Cancel();
