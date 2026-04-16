@@ -8,6 +8,8 @@ public class PlayerPickDropInteraction : MonoBehaviour
     private PickUpObject currentObject;
     private DropZone currentZone;
 
+    private bool isHoldingObject = false;
+
     private Coroutine actionRoutine;
 
     //DEBUGGING PURPOSES--------------------------------------
@@ -17,20 +19,23 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        DebugManager.instance.Log("Entered trigger: {other.name}", activateDebugs, debugName);
-
         PickUpObject obj = other.GetComponent<PickUpObject>();
+        DropZone zone = other.GetComponent<DropZone>();
+
+        if (obj == null && zone == null) return;
+
+        DebugManager.instance.Log($"Entered trigger: {other.name}", activateDebugs, debugName);
+
         if (obj != null)
         {
-            DebugManager.instance.Log("Found pickup object: {other.name}", activateDebugs, debugName);
+            DebugManager.instance.Log($"Found pickup object: {other.name}", activateDebugs, debugName);
             currentObject = obj;
             StartPickUp();
         }
 
-        DropZone zone = other.GetComponent<DropZone>();
         if (zone != null)
         {
-            DebugManager.instance.Log("Entered drop zone: {other.name}", activateDebugs, debugName);
+            DebugManager.instance.Log($"Entered drop zone: {other.name}", activateDebugs, debugName);
             currentZone = zone;
             StartDrop();
         }
@@ -38,11 +43,14 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        DebugManager.instance.Log("Exited trigger: {other.name}", activateDebugs, debugName);
+        DebugManager.instance.Log($"Exited trigger: {other.name}", activateDebugs, debugName);
 
         if (other.GetComponent<PickUpObject>() != null)
         {
             DebugManager.instance.Log("Left pickup object range... Canceling action", activateDebugs, debugName);
+
+            if (isHoldingObject) return;
+
             CancelAction();
             currentObject = null;
         }
@@ -69,7 +77,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
             return;
         }
 
-        DebugManager.instance.Log("Starting pickup: {currentObject.name}", activateDebugs, debugName);
+        DebugManager.instance.Log($"Starting pickup: {currentObject.name}", activateDebugs, debugName);
 
         CancelAction();
         actionRoutine = StartCoroutine(PickUpAfterDelay());
@@ -95,7 +103,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
             return;
         }
 
-        DebugManager.instance.Log("Starting drop into: {currentZone.name}", activateDebugs, debugName);
+        DebugManager.instance.Log($"Starting drop into: {currentZone.name}", activateDebugs, debugName);
 
         CancelAction();
         actionRoutine = StartCoroutine(DropAfterDelay());
@@ -103,21 +111,23 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     IEnumerator PickUpAfterDelay()
     {
-        DebugManager.instance.Log("Pickup coroutine started ({currentObject.pickUpTime}s)", activateDebugs, debugName);
+        DebugManager.instance.Log($"Pickup coroutine started ({currentObject.pickUpTime}s)", activateDebugs, debugName);
 
         yield return new WaitForSeconds(currentObject.pickUpTime);
 
         DebugManager.instance.Log("Pickup completed", activateDebugs, debugName);
+        isHoldingObject = true;
         currentObject.TryPickUp(holdPoint);
     }
 
     IEnumerator DropAfterDelay()
     {
-        DebugManager.instance.Log("Drop coroutine started ({currentObject.dropTime}s)", activateDebugs, debugName);
+        DebugManager.instance.Log($"Drop coroutine started ({currentObject.dropTime}s)", activateDebugs, debugName);
 
         yield return new WaitForSeconds(currentObject.dropTime);
 
         DebugManager.instance.Log("Drop completed", activateDebugs, debugName);
+        isHoldingObject = false;
         currentObject.TryDrop(currentZone);
     }
 

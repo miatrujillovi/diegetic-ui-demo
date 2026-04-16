@@ -1,58 +1,94 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
     [SerializeField] public float pickUpTime = 2f;
     [SerializeField] public float dropTime = 2f;
+    [SerializeField] public ObjectZoneManager.RitualObjects ritualObjectType;
+
+    private Transform selectedDropPoint;
+
+    private bool isPlaced = false;
 
     private bool isBeingHeld = false;
-    private bool isPicking = false;
 
     private Transform holdPoint; //Transform inside the player on where he holds the object
 
+    public static Action<ObjectZoneManager.RitualObjects> OnObjectDropped;
+
     public void TryPickUp(Transform _playerHoldPoint)
     {
-        if (isBeingHeld || isPicking) return;
+        if (isBeingHeld || isPlaced) return;
 
         holdPoint = _playerHoldPoint;
-        StartCoroutine(PickUpRoutine());
+        PickUpRoutine();
     }
 
-    IEnumerator PickUpRoutine()
+    private void PickUpRoutine()
     {
-        isPicking = true;
-
-        yield return new WaitForSeconds(pickUpTime);
-
         isBeingHeld = true;
 
         //Parent Object to Player
         transform.SetParent(holdPoint);
         transform.localPosition = Vector3.zero;
 
-        isPicking = false;
     }
 
     public void TryDrop(DropZone _zone)
     {
-        if (isBeingHeld || isPicking) return;
+        if (!isBeingHeld) return;
 
-        StartCoroutine(DropRoutine(_zone));
+        DropRoutine(_zone);
     }
 
-    IEnumerator DropRoutine(DropZone _zone)
+    private void DropRoutine(DropZone _zone)
     {
-        isPicking = true;
-
-        yield return new WaitForSeconds(dropTime);
-
         isBeingHeld = false;
 
-        transform.SetParent(null);
-        transform.position = _zone.dropPoint.position;
+        SelectDropPoint(_zone);
 
-        isPicking = false;
+        transform.SetParent(null);
+        transform.position = selectedDropPoint.position;
+
+        isPlaced = true;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        OnObjectDropped?.Invoke(ritualObjectType);
+    }
+
+    private void SelectDropPoint(DropZone _zone)
+    {
+        switch (ritualObjectType)
+        {
+            case ObjectZoneManager.RitualObjects.Light1:
+                selectedDropPoint = _zone.light1DropPoint;
+                break;
+
+            case ObjectZoneManager.RitualObjects.Light2:
+                selectedDropPoint = _zone.light2DropPoint;
+                break;
+
+            case ObjectZoneManager.RitualObjects.Light3:
+                selectedDropPoint = _zone.light3DropPoint;
+                break;
+
+            case ObjectZoneManager.RitualObjects.Light4:
+                selectedDropPoint = _zone.light4DropPoint;
+                break;
+
+            case ObjectZoneManager.RitualObjects.Bible:
+                selectedDropPoint = _zone.bibleDropPoint;
+                break;
+
+            case ObjectZoneManager.RitualObjects.Sword:
+                selectedDropPoint = _zone.swordDropPoint;
+                break;
+
+            default:
+                selectedDropPoint = null;
+                break;
+        }
     }
 
     public bool IsHeld()
