@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 426286627}
   - component: {fileID: 426286626}
   - component: {fileID: 426286630}
+  - component: {fileID: 426286631}
   m_Layer: 0
   m_Name: Light1
   m_TagString: Untagged
@@ -278,6 +279,20 @@ MonoBehaviour:
   pickUpTime: 5
   dropTime: 5
   ritualObjectType: 0
+--- !u!114 &426286631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426286625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  maxOutlineWidth: 5
+  outlineProperty: _OutlineWidth
 --- !u!1 &431098587
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +306,7 @@ GameObject:
   - component: {fileID: 431098590}
   - component: {fileID: 431098589}
   - component: {fileID: 431098588}
+  - component: {fileID: 431098593}
   m_Layer: 0
   m_Name: Bible
   m_TagString: Untagged
@@ -406,6 +422,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &431098593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431098587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  maxOutlineWidth: 5
+  outlineProperty: _OutlineWidth
 --- !u!1 &434696249
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +708,7 @@ GameObject:
   - component: {fileID: 670920451}
   - component: {fileID: 670920450}
   - component: {fileID: 670920449}
+  - component: {fileID: 670920454}
   m_Layer: 0
   m_Name: Light2
   m_TagString: Untagged
@@ -793,6 +824,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670920454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670920448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  maxOutlineWidth: 5
+  outlineProperty: _OutlineWidth
 --- !u!1 &770209721
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,6 +927,7 @@ GameObject:
   - component: {fileID: 1389981839}
   - component: {fileID: 1389981838}
   - component: {fileID: 1389981837}
+  - component: {fileID: 1389981842}
   m_Layer: 0
   m_Name: Light4
   m_TagString: Untagged
@@ -997,6 +1043,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1389981842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389981836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  maxOutlineWidth: 5
+  outlineProperty: _OutlineWidth
 --- !u!1 &1449592091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1070,7 @@ GameObject:
   - component: {fileID: 1449592094}
   - component: {fileID: 1449592093}
   - component: {fileID: 1449592092}
+  - component: {fileID: 1449592097}
   m_Layer: 0
   m_Name: Light3
   m_TagString: Untagged
@@ -1125,6 +1186,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449592097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449592091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  maxOutlineWidth: 5
+  outlineProperty: _OutlineWidth
 --- !u!1 &1479116497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1306,7 @@ GameObject:
   - component: {fileID: 1580592095}
   - component: {fileID: 1580592094}
   - component: {fileID: 1580592093}
+  - component: {fileID: 1580592098}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1346,6 +1422,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580592098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580592092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  maxOutlineWidth: 5
+  outlineProperty: _OutlineWidth
 --- !u!1 &1642520622
 GameObject:
   m_ObjectHideFlags: 0

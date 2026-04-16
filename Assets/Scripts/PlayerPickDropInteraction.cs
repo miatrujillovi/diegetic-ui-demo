@@ -25,6 +25,9 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private CancellationTokenSource cts;
 
+    //SHADER LOGIC---------------------------------------------------------------------
+    private ObjectShaderLogic currentShader;
+
     //DEBUGGING PURPOSES---------------------------------------------------------------
     [Header("Debugging")]
     [SerializeField, Tooltip("Should Debug.Logs of this script show on console?")] private bool activateDebugs;
@@ -45,6 +48,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
         {
             DebugManager.instance.Log($"Found pickup object: {other.name}", activateDebugs, debugName);
             currentObject = obj;
+            currentShader = obj.GetComponent<ObjectShaderLogic>(); //SHADER
             StartPickUp();
         }
 
@@ -65,6 +69,12 @@ public class PlayerPickDropInteraction : MonoBehaviour
             DebugManager.instance.Log("Left pickup object range... Canceling action", activateDebugs, debugName);
 
             if (isHoldingObject) return;
+
+            //SHADER
+            if (currentShader != null)
+            {
+                currentShader.ResetOutline();
+            }
 
             CancelAction();
             currentObject = null;
@@ -164,6 +174,15 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
                 DebugManager.instance.Log(progress.ToString(), activateDebugs, debugName);
 
+                //SHADER
+                float t = progress / targetTime;
+
+                if (currentShader != null)
+                {
+                    currentShader.SetProgress(t);
+                }
+
+                //Completion
                 if (progress >= targetTime)
                 {
                     CompleteAction();
@@ -180,6 +199,12 @@ public class PlayerPickDropInteraction : MonoBehaviour
     //Stars reducing time on the timer
     void CancelAction()
     {
+        //SHADER
+        if (currentShader != null)
+        {
+            currentShader.ResetOutline();
+        }
+
         isActive = false;
         isReversing = true;
     }
