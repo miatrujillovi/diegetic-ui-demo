@@ -1,22 +1,35 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerPickDropInteraction : MonoBehaviour
 {
     [SerializeField] private Transform holdPoint;
+    [SerializeField] private float timerDecay = 0.5f;
 
+    //OBJECT LOGIC VARIABLES-----------------------------
     private PickUpObject currentObject;
     private DropZone currentZone;
 
     private bool isHoldingObject = false;
 
-    private Coroutine actionRoutine;
+    //TIMER LOGIC VARIABLES--------------------------------
+    //private UniTask actionRoutine;
+    private float progress = 0f;
+    private float targetTime = 0f;
+
+    private bool isActive = false;
+    private bool isReversing = false;
+
+    private CancellationTokenSource cts;
 
     //DEBUGGING PURPOSES--------------------------------------
     [Header("Debugging")]
     [SerializeField] private bool activateDebugs;
     private string debugName = "[PickDrop]";
 
+    #region Triggers
     private void OnTriggerEnter(Collider other)
     {
         PickUpObject obj = other.GetComponent<PickUpObject>();
@@ -63,6 +76,10 @@ public class PlayerPickDropInteraction : MonoBehaviour
         }
     }
 
+    #endregion Triggers
+
+    #region StartFunctions
+
     private void StartPickUp()
     {
         if (currentObject == null)
@@ -79,8 +96,11 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
         DebugManager.instance.Log($"Starting pickup: {currentObject.name}", activateDebugs, debugName);
 
-        CancelAction();
-        actionRoutine = StartCoroutine(PickUpAfterDelay());
+        targetTime = currentObject.pickUpTime;
+        isActive = true;
+        isReversing = false;
+
+        StartLoopIfNeeded();
     }
 
     private void StartDrop()
@@ -105,40 +125,110 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
         DebugManager.instance.Log($"Starting drop into: {currentZone.name}", activateDebugs, debugName);
 
-        CancelAction();
-        actionRoutine = StartCoroutine(DropAfterDelay());
+        targetTime = currentObject.dropTime;
+        isActive = true;
+        isReversing = false;
+
+        StartLoopIfNeeded();
     }
 
-    IEnumerator PickUpAfterDelay()
+    #endregion StartFunctions
+
+    #region TimerControl
+
+    async UniTaskVoid ActionLoop()
+    {
+        cts = new CancellationTokenSource();
+
+        try
+        {
+            while (!cts.Token.IsCancellationRequested)
+            {
+                float dt = Time.deltaTime;
+
+                if (isActive)
+                {
+                    progress += dt;
+                } 
+                else if (isReversing)
+                {
+                    progress -= dt * timerDecay;
+                }
+
+                progress = Mathf.Clamp(progress, 0f, targetTime);
+
+                if (progress >= targetTime)
+                {
+                    CompleteAction();
+                    progress = 0f;
+                    isActive = false;
+                }
+
+                await UniTask.Yield(cts.Token);
+            }
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    /*async UniTask PickUpAfterDelay()
     {
         DebugManager.instance.Log($"Pickup coroutine started ({currentObject.pickUpTime}s)", activateDebugs, debugName);
 
-        yield return new WaitForSeconds(currentObject.pickUpTime);
+        await UniTask.Delay(TimeSpan.FromSeconds(currentObject.pickUpTime));
 
         DebugManager.instance.Log("Pickup completed", activateDebugs, debugName);
         isHoldingObject = true;
         currentObject.TryPickUp(holdPoint);
     }
 
-    IEnumerator DropAfterDelay()
+    async UniTask DropAfterDelay()
     {
         DebugManager.instance.Log($"Drop coroutine started ({currentObject.dropTime}s)", activateDebugs, debugName);
 
-        yield return new WaitForSeconds(currentObject.dropTime);
+        await UniTask.Delay(TimeSpan.FromSeconds(currentObject.dropTime));
 
         DebugManager.instance.Log("Drop completed", activateDebugs, debugName);
         isHoldingObject = false;
         currentObject.TryDrop(currentZone);
-    }
+    }*/
 
     void CancelAction()
     {
-        if (actionRoutine != null)
-        {
-            DebugManager.instance.Log("Canceling current action", activateDebugs, debugName);
+        isActive = false;
+        isReversing = true;
+    }
 
-            StopCoroutine(actionRoutine);
-            actionRoutine = null;
+    void CompleteAction()
+    {
+        if (!isHoldingObject)
+        {
+            isHoldingObject = true;
+            currentObject.TryPickUp(holdPoint);
+        }
+        else
+        {
+            isHoldingObject = false;
+            currentObject.TryDrop(currentZone);
         }
     }
+
+    void StartLoopIfNeeded()
+    {
+        if (cts == null || cts.IsCancellationRequested)
+        {
+            ActionLoop().Forget();
+        }
+    }
+
+    void StopAll()
+    {
+        cts?.Cancel();
+        cts = null;
+
+        progress = 0f;
+        isActive = false;
+        isReversing = false;
+    }
+
+    #endregion TimerControl
 }

@@ -510,7 +510,7 @@ Transform:
   m_GameObject: {fileID: 600913790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14526, y: 1.00992, z: -0.10865}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d353a6e71a00cb045b7d7d9a2899e50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectZoneManager
-  activateDebugs: 1
+  activateDebugs: 0
 --- !u!4 &770209723
 Transform:
   m_ObjectHideFlags: 0
@@ -832,7 +832,7 @@ Transform:
   m_GameObject: {fileID: 770209721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29065, y: -0, z: 0.90953}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
