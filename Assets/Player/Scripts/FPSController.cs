@@ -24,7 +24,7 @@ public class FPSController : MonoBehaviour
     public float staminaRecovery = 1.5f;
 
     public float currentStamina;
-    private bool canSprint = true;
+    public bool canSprint = true;
 
     [Header("Cámara")]
     public float standCameraHeight = 1.6f;
