@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 426286626}
   - component: {fileID: 426286630}
   - component: {fileID: 426286631}
+  - component: {fileID: 426286632}
   m_Layer: 0
   m_Name: Light1
   m_TagString: Untagged
@@ -218,6 +219,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e4b286f7f3dc69041b91fef302341c91, type: 2}
+  - {fileID: 2100000, guid: 386f343354c855d46b500cfd016122cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -258,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 426286625}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 0.089, z: -3.76}
+  m_LocalPosition: {x: 2.79, y: 0.125, z: -3.76}
   m_LocalScale: {x: 0.1862407, y: 0.1862407, z: 0.1862407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -291,8 +293,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  baseEmissive: 1
   maxEmissive: 5
   emissiveOutline: Emissive
+  rend: {fileID: 426286627}
+--- !u!114 &426286632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426286625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
+  baseShakeIntensity: 0.1
+  maxShakeIntensity: 0.9
+  shakeDuration: 0.1
 --- !u!1 &431098587
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +326,7 @@ GameObject:
   - component: {fileID: 431098589}
   - component: {fileID: 431098588}
   - component: {fileID: 431098593}
+  - component: {fileID: 431098594}
   m_Layer: 0
   m_Name: Bible
   m_TagString: Untagged
@@ -376,6 +396,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 30a209ea15399af4097738cbb8f8e0e1, type: 2}
+  - {fileID: 2100000, guid: 386f343354c855d46b500cfd016122cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -416,7 +437,7 @@ Transform:
   m_GameObject: {fileID: 431098587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 0.089, z: 1.924}
+  m_LocalPosition: {x: 2.79, y: 0.125, z: 1.924}
   m_LocalScale: {x: 0.1862407, y: 0.1862407, z: 0.1862407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -434,8 +455,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  baseEmissive: 1
   maxEmissive: 5
   emissiveOutline: Emissive
+  rend: {fileID: 431098590}
+--- !u!114 &431098594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431098587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
+  baseShakeIntensity: 0.1
+  maxShakeIntensity: 0.9
+  shakeDuration: 0.1
 --- !u!1 &434696249
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +747,7 @@ GameObject:
   - component: {fileID: 670920450}
   - component: {fileID: 670920449}
   - component: {fileID: 670920454}
+  - component: {fileID: 670920455}
   m_Layer: 0
   m_Name: Light2
   m_TagString: Untagged
@@ -778,6 +817,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e4b286f7f3dc69041b91fef302341c91, type: 2}
+  - {fileID: 2100000, guid: 386f343354c855d46b500cfd016122cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -818,7 +858,7 @@ Transform:
   m_GameObject: {fileID: 670920448}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 0.089, z: -2.241}
+  m_LocalPosition: {x: 2.79, y: 0.125, z: -2.241}
   m_LocalScale: {x: 0.1862407, y: 0.1862407, z: 0.1862407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -836,8 +876,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  baseEmissive: 1
   maxEmissive: 5
   emissiveOutline: Emissive
+  rend: {fileID: 670920451}
+--- !u!114 &670920455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670920448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
+  baseShakeIntensity: 0.1
+  maxShakeIntensity: 0.9
+  shakeDuration: 0.1
 --- !u!1 &770209721
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +985,7 @@ GameObject:
   - component: {fileID: 1389981838}
   - component: {fileID: 1389981837}
   - component: {fileID: 1389981842}
+  - component: {fileID: 1389981843}
   m_Layer: 0
   m_Name: Light4
   m_TagString: Untagged
@@ -997,6 +1055,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e4b286f7f3dc69041b91fef302341c91, type: 2}
+  - {fileID: 2100000, guid: 386f343354c855d46b500cfd016122cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1037,7 +1096,7 @@ Transform:
   m_GameObject: {fileID: 1389981836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 0.089, z: 0.49399996}
+  m_LocalPosition: {x: 2.79, y: 0.125, z: 0.49399996}
   m_LocalScale: {x: 0.1862407, y: 0.1862407, z: 0.1862407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1055,8 +1114,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  baseEmissive: 1
   maxEmissive: 5
   emissiveOutline: Emissive
+  rend: {fileID: 1389981839}
+--- !u!114 &1389981843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389981836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
+  baseShakeIntensity: 0.1
+  maxShakeIntensity: 0.9
+  shakeDuration: 0.1
 --- !u!1 &1449592091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1147,7 @@ GameObject:
   - component: {fileID: 1449592093}
   - component: {fileID: 1449592092}
   - component: {fileID: 1449592097}
+  - component: {fileID: 1449592098}
   m_Layer: 0
   m_Name: Light3
   m_TagString: Untagged
@@ -1140,6 +1217,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e4b286f7f3dc69041b91fef302341c91, type: 2}
+  - {fileID: 2100000, guid: 386f343354c855d46b500cfd016122cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1180,7 +1258,7 @@ Transform:
   m_GameObject: {fileID: 1449592091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 0.089, z: -0.92600006}
+  m_LocalPosition: {x: 2.79, y: 0.125, z: -0.92600006}
   m_LocalScale: {x: 0.1862407, y: 0.1862407, z: 0.1862407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1198,8 +1276,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  baseEmissive: 1
   maxEmissive: 5
   emissiveOutline: Emissive
+  rend: {fileID: 1449592094}
+--- !u!114 &1449592098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449592091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
+  baseShakeIntensity: 0.1
+  maxShakeIntensity: 0.9
+  shakeDuration: 0.1
 --- !u!1 &1479116497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,6 +1402,7 @@ GameObject:
   - component: {fileID: 1580592094}
   - component: {fileID: 1580592093}
   - component: {fileID: 1580592098}
+  - component: {fileID: 1580592099}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1435,8 +1531,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1582a9501e99c69499eec0bf218fbdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShaderLogic
+  baseEmissive: 1
   maxEmissive: 5
   emissiveOutline: Emissive
+  rend: {fileID: 1580592095}
+--- !u!114 &1580592099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580592092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
+  baseShakeIntensity: 0.1
+  maxShakeIntensity: 0.9
+  shakeDuration: 0.1
 --- !u!1 &1642520622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1681356977
 Light:
   m_ObjectHideFlags: 0
@@ -1871,7 +1984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPickDropInteraction
   holdPoint: {fileID: 1479116498}
   timerDecay: 0.5
-  activateDebugs: 1
+  activateDebugs: 0
 --- !u!65 &1904427682
 BoxCollider:
   m_ObjectHideFlags: 0

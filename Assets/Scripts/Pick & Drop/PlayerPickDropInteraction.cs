@@ -47,6 +47,9 @@ public class PlayerPickDropInteraction : MonoBehaviour
         if (obj != null)
         {
             DebugManager.instance.Log($"Found pickup object: {other.name}", activateDebugs, debugName);
+
+            if (currentObject) return;
+
             currentObject = obj;
             StartPickUp();
         }
