@@ -8,7 +8,6 @@ public class PlayerPickDropInteraction : MonoBehaviour
     [Header("Player Object Interaction")]
     [SerializeField, Tooltip("Transform inside Player where the object is to be placed")] private Transform holdPoint;
     [SerializeField, Tooltip("Multiplier of how fast the timer will decay outside of the trigger zone of the object")] private float timerDecay = 0.5f;
-    [Space]
 
     //OBJECT LOGIC VARIABLES-----------------------------------------------------------
     private PickUpObject currentObject;
@@ -25,8 +24,9 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
     private CancellationTokenSource cts;
 
-    //SHADER LOGIC---------------------------------------------------------------------
-    private ObjectShaderLogic currentShader;
+    //SHADER, TWEEN AND AUDIO----------------------------------------------------------
+    public static Action<PickUpObject, float> onPickingObject;
+    public static Action onDroppingObject;
 
     //DEBUGGING PURPOSES---------------------------------------------------------------
     [Header("Debugging")]
@@ -48,7 +48,6 @@ public class PlayerPickDropInteraction : MonoBehaviour
         {
             DebugManager.instance.Log($"Found pickup object: {other.name}", activateDebugs, debugName);
             currentObject = obj;
-            currentShader = obj.GetComponent<ObjectShaderLogic>(); //SHADER
             StartPickUp();
         }
 
@@ -70,12 +69,6 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
             if (isHoldingObject) return;
 
-            //SHADER
-            if (currentShader != null)
-            {
-                currentShader.ResetOutline();
-            }
-
             CancelAction();
             currentObject = null;
         }
@@ -83,8 +76,16 @@ public class PlayerPickDropInteraction : MonoBehaviour
         if (other.GetComponent<DropZone>() != null)
         {
             DebugManager.instance.Log("Left drop zone.. canceling action", activateDebugs, debugName);
-            CancelAction();
-            currentZone = null;
+            if (other.GetComponent<PickUpObject>() != null)
+            {
+                if (!isHoldingObject && currentObject != null)
+                {
+                    onPickingObject?.Invoke(currentObject, 0f);
+                }
+
+                CancelAction();
+                currentObject = null;
+            }
         }
     }
 
@@ -172,15 +173,11 @@ public class PlayerPickDropInteraction : MonoBehaviour
 
                 progress = Mathf.Clamp(progress, 0f, targetTime);
 
-                DebugManager.instance.Log(progress.ToString(), activateDebugs, debugName);
-
                 //SHADER
-                float t = progress / targetTime;
+                float normalized = targetTime > 0 ? progress / targetTime : 0f;
+                onPickingObject?.Invoke(currentObject, normalized);
 
-                if (currentShader != null)
-                {
-                    currentShader.SetProgress(t);
-                }
+                DebugManager.instance.Log(progress.ToString(), activateDebugs, debugName);
 
                 //Completion
                 if (progress >= targetTime)
@@ -199,12 +196,6 @@ public class PlayerPickDropInteraction : MonoBehaviour
     //Stars reducing time on the timer
     void CancelAction()
     {
-        //SHADER
-        if (currentShader != null)
-        {
-            currentShader.ResetOutline();
-        }
-
         isActive = false;
         isReversing = true;
     }
@@ -222,6 +213,8 @@ public class PlayerPickDropInteraction : MonoBehaviour
             isHoldingObject = false;
             currentObject.TryDrop(currentZone);
         }
+
+        onPickingObject?.Invoke(currentObject, 0f);
     }
 
     //Starts the loop of the new timer.
@@ -242,6 +235,8 @@ public class PlayerPickDropInteraction : MonoBehaviour
         progress = 0f;
         isActive = false;
         isReversing = false;
+
+        onPickingObject?.Invoke(currentObject, 0f);
     }
 
     #endregion TimerControl
