@@ -216,6 +216,7 @@ public class FPSController : MonoBehaviour
             if (spot != null)
             {
                 spot.Interactuar(this); // Nos pasamos a nosotros mismos como referencia
+                Debug.Log("Interactuando");
             }
         }
     }
