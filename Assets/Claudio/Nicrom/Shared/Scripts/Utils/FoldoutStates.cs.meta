@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 36168d448677b924e9ae1eeca87a6e3b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Scripts/Utils/FoldoutStates.cs
+  uploadId: 776035

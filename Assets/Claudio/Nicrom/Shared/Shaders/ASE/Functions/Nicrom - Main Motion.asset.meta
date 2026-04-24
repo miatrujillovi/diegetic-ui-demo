@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6e03dab67159a7a4bb2f40a21574c476
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Functions/Nicrom - Main Motion.asset
+  uploadId: 776035

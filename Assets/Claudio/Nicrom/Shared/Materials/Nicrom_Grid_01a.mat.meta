@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c763b7f863978a44e9d21963caab0d7f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Materials/Nicrom_Grid_01a.mat
+  uploadId: 776035

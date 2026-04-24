@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3a042379c94d7c7498e874e23ebf98e6
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Surface/Nicrom_Surface.shader
+  uploadId: 776035

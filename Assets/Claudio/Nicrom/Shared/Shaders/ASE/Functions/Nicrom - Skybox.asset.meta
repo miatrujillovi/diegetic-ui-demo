@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7e0aa1151e6cbc24db69a0215c2cdbec
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Functions/Nicrom - Skybox.asset
+  uploadId: 776035

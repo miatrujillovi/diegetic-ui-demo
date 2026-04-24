@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1bf1638125e6de143b9671176c83d8c5
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Vegetation/Nicrom_Vegetation_Leaves.shader
+  uploadId: 776035

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 69b099c9977518448a9c23bac90dcf00
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Functions/Nicrom - World Space UVs.asset
+  uploadId: 776035

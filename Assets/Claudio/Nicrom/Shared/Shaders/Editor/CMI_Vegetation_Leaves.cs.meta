@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 54241f1e6555cbe4b863e70bc391398f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/Editor/CMI_Vegetation_Leaves.cs
+  uploadId: 776035

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bf467c9d356eccf41bcee574fc86ec5f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Vegetation/Nicrom_Grass.shader
+  uploadId: 776035

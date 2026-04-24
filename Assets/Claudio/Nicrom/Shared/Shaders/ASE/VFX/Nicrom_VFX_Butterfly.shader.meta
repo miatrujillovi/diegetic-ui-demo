@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f56e3191350d61a47a72244367c3ec68
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/VFX/Nicrom_VFX_Butterfly.shader
+  uploadId: 776035

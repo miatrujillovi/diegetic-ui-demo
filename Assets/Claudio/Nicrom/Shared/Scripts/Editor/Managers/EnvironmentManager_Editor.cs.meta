@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 01d6b7d0e808a2841a38bc095345fda6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Scripts/Editor/Managers/EnvironmentManager_Editor.cs
+  uploadId: 776035

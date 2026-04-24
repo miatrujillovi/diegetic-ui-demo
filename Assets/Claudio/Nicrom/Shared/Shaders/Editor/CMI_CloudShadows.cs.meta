@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a5a3e847a6d4adb4a897b19856bcfa8c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/Editor/CMI_CloudShadows.cs
+  uploadId: 776035

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: df71bf79ed3f57a448c31b50887471bb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Scripts/Editor/Utils/UpdateReflectionProbes_Editor.cs
+  uploadId: 776035

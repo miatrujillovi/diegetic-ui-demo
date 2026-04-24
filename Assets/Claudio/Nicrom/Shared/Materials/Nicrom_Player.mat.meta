@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: db31c68c1748096458bbad81275a943e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Materials/Nicrom_Player.mat
+  uploadId: 776035

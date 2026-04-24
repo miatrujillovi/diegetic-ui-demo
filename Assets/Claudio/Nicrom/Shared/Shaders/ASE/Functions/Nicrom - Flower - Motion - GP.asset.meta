@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0947e61a284d6ce44bc8a21d32d9ac74
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Functions/Nicrom - Flower - Motion
+    - GP.asset
+  uploadId: 776035

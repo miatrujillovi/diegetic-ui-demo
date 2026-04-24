@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e64859c632d2fee45ab9360dd464f78b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Functions/Nicrom - Vegetation - Bark
+    - Main.asset
+  uploadId: 776035

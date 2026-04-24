@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d6c4f15f8f42959488bbcdf37a28aa84
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Shaders/ASE/Functions/Nicrom - Pivot From UV1.asset
+  uploadId: 776035

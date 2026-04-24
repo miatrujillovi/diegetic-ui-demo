@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 72c3b5d8138a5954489f737b0f8402bd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 279961
+  packageName: Stylized Poly Nature
+  packageVersion: 2.2.0
+  assetPath: Assets/Nicrom/Shared/Prefab/FlyCamera.prefab
+  uploadId: 776035
