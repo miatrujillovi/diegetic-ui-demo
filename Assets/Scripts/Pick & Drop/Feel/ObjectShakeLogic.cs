@@ -32,6 +32,12 @@ public class ObjectShakeLogic : MonoBehaviour
     {
         if (obj != myObject) return;
 
+        if (myObject.IsHeld())
+        {
+            ResetShake();
+            return;
+        }
+
         t = Mathf.Clamp01(t);
 
         float intensity = Mathf.Lerp(baseShakeIntensity, maxShakeIntensity, t);
@@ -42,7 +48,6 @@ public class ObjectShakeLogic : MonoBehaviour
     private void StartShake(float intensity)
     {
         shakeTween?.Kill();
-
 
         shakeTween = DOTween.To(
             () => 0f,
@@ -64,6 +69,14 @@ public class ObjectShakeLogic : MonoBehaviour
     private void ResetShake()
     {
         shakeTween?.Kill();
-        transform.localPosition = startLocalPos;
+        //transform.localPosition = startLocalPos;
+    }
+
+    private void OnTransformParentChanged()
+    {
+        shakeTween?.Kill();
+
+        transform.localPosition = Vector3.zero;
+        startLocalPos = transform.localPosition;
     }
 }

@@ -309,9 +309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
-  baseShakeIntensity: 0.1
-  maxShakeIntensity: 0.9
-  shakeDuration: 0.1
+  baseShakeIntensity: 0.05
+  maxShakeIntensity: 0.1
+  shakeDuration: 0.01
+  holdPosition: {fileID: 1479116498}
 --- !u!1 &431098587
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,9 +472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
-  baseShakeIntensity: 0.1
-  maxShakeIntensity: 0.9
-  shakeDuration: 0.1
+  baseShakeIntensity: 0.05
+  maxShakeIntensity: 0.1
+  shakeDuration: 0.01
+  holdPosition: {fileID: 1479116498}
 --- !u!1 &434696249
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,9 +894,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
-  baseShakeIntensity: 0.1
-  maxShakeIntensity: 0.9
-  shakeDuration: 0.1
+  baseShakeIntensity: 0.05
+  maxShakeIntensity: 0.1
+  shakeDuration: 0.01
+  holdPosition: {fileID: 1479116498}
 --- !u!1 &770209721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,9 +1133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
-  baseShakeIntensity: 0.1
-  maxShakeIntensity: 0.9
-  shakeDuration: 0.1
+  baseShakeIntensity: 0.05
+  maxShakeIntensity: 0.1
+  shakeDuration: 0.01
+  holdPosition: {fileID: 1479116498}
 --- !u!1 &1449592091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,9 +1296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
-  baseShakeIntensity: 0.1
-  maxShakeIntensity: 0.9
-  shakeDuration: 0.1
+  baseShakeIntensity: 0.05
+  maxShakeIntensity: 0.1
+  shakeDuration: 0.01
+  holdPosition: {fileID: 1479116498}
 --- !u!1 &1479116497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,9 +1552,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a9fb42fd26394397aa5104187b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectShakeLogic
-  baseShakeIntensity: 0.1
-  maxShakeIntensity: 0.9
-  shakeDuration: 0.1
+  baseShakeIntensity: 0.05
+  maxShakeIntensity: 0.1
+  shakeDuration: 0.01
+  holdPosition: {fileID: 1479116498}
 --- !u!1 &1642520622
 GameObject:
   m_ObjectHideFlags: 0
