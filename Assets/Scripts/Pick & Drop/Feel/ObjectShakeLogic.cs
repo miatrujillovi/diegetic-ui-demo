@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using DG.Tweening;
 
 public class ObjectShakeLogic : MonoBehaviour
@@ -14,12 +14,12 @@ public class ObjectShakeLogic : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerPickDropInteraction.onPickingObject += SetShake;
+        PlayerPickDropInteraction.onObjectInteract += SetShake;
     }
 
     private void OnDisable()
     {
-        PlayerPickDropInteraction.onPickingObject -= SetShake;
+        PlayerPickDropInteraction.onObjectInteract -= SetShake;
     }
 
     private void Awake()
@@ -28,18 +28,17 @@ public class ObjectShakeLogic : MonoBehaviour
         startLocalPos = transform.localPosition;
     }
 
-    private void SetShake(PickUpObject obj, float t)
+    private void SetShake(PickUpObject obj, float t, bool _isDropping)
     {
         if (obj != myObject) return;
 
-        if (myObject.IsHeld())
+        if (myObject.IsHeld() || _isDropping)
         {
             ResetShake();
             return;
         }
 
         t = Mathf.Clamp01(t);
-
         float intensity = Mathf.Lerp(baseShakeIntensity, maxShakeIntensity, t);
 
         StartShake(intensity);
@@ -69,14 +68,13 @@ public class ObjectShakeLogic : MonoBehaviour
     private void ResetShake()
     {
         shakeTween?.Kill();
-        //transform.localPosition = startLocalPos;
+        transform.localPosition = startLocalPos;
     }
 
     private void OnTransformParentChanged()
     {
         shakeTween?.Kill();
 
-        transform.localPosition = Vector3.zero;
         startLocalPos = transform.localPosition;
     }
-}
+}*/

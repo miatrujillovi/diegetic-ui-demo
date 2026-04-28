@@ -25,8 +25,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
     private CancellationTokenSource cts;
 
     //SHADER, TWEEN AND AUDIO----------------------------------------------------------
-    public static Action<PickUpObject, float> onPickingObject;
-    public static Action onDroppingObject;
+    public static Action<PickUpObject, float, bool> onObjectInteract;
 
     //DEBUGGING PURPOSES---------------------------------------------------------------
     [Header("Debugging")]
@@ -81,10 +80,10 @@ public class PlayerPickDropInteraction : MonoBehaviour
             DebugManager.instance.Log("Left drop zone.. canceling action", activateDebugs, debugName);
             if (other.GetComponent<PickUpObject>() != null)
             {
-                if (!isHoldingObject && currentObject != null)
+                /*if (!isHoldingObject && currentObject != null)
                 {
-                    onPickingObject?.Invoke(currentObject, 0f);
-                }
+                    onObjectInteract?.Invoke(currentObject, 0f, false);
+                }*/
 
                 CancelAction();
                 currentObject = null;
@@ -175,10 +174,10 @@ public class PlayerPickDropInteraction : MonoBehaviour
                 }
 
                 progress = Mathf.Clamp(progress, 0f, targetTime);
-
-                //SHADER
                 float normalized = targetTime > 0 ? progress / targetTime : 0f;
-                onPickingObject?.Invoke(currentObject, normalized);
+
+                bool isDropping = isHoldingObject;
+                onObjectInteract?.Invoke(currentObject, normalized, isDropping);
 
                 DebugManager.instance.Log(progress.ToString(), activateDebugs, debugName);
 
@@ -217,7 +216,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
             currentObject.TryDrop(currentZone);
         }
 
-        onPickingObject?.Invoke(currentObject, 0f);
+        onObjectInteract?.Invoke(currentObject, 0f, false);
     }
 
     //Starts the loop of the new timer.
@@ -239,7 +238,7 @@ public class PlayerPickDropInteraction : MonoBehaviour
         isActive = false;
         isReversing = false;
 
-        onPickingObject?.Invoke(currentObject, 0f);
+        onObjectInteract?.Invoke(currentObject, 0f, false);
     }
 
     #endregion TimerControl

@@ -14,12 +14,12 @@ public class ObjectShaderLogic : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerPickDropInteraction.onPickingObject += SetProgress;
+        PlayerPickDropInteraction.onObjectInteract += SetProgress;
     }
 
     private void OnDisable()
     {
-        PlayerPickDropInteraction.onPickingObject -= SetProgress;
+        PlayerPickDropInteraction.onObjectInteract -= SetProgress;
     }
 
     private void Awake()
@@ -28,7 +28,7 @@ public class ObjectShaderLogic : MonoBehaviour
         myObject = GetComponent<PickUpObject>();
     }
 
-    public void SetProgress(PickUpObject obj, float t)
+    public void SetProgress(PickUpObject obj, float t, bool _isDropping)
     {
         if (obj != myObject) return;
 
