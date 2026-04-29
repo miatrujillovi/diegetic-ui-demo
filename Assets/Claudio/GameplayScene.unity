@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 5597301798980826720, guid: c1cae36e0aff3ee41af2bee11fcbfafb, type: 3}
+      propertyPath: maxEmissive
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8664470193192270684, guid: c1cae36e0aff3ee41af2bee11fcbfafb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4202476
@@ -491,6 +495,10 @@ PrefabInstance:
     - target: {fileID: 188713187728519224, guid: c25aa4e0ffb0d724698b8634ed982a25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915603549280477365, guid: c25aa4e0ffb0d724698b8634ed982a25, type: 3}
+      propertyPath: maxEmissive
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5777590174168119329, guid: c25aa4e0ffb0d724698b8634ed982a25, type: 3}
       propertyPath: m_Size.x
@@ -3571,6 +3579,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1654855823}
     m_Modifications:
+    - target: {fileID: 3537391967866931491, guid: 701d682b231ff904eb2b925c725fa607, type: 3}
+      propertyPath: maxEmissive
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4119066425341224388, guid: 701d682b231ff904eb2b925c725fa607, type: 3}
       propertyPath: m_Size.x
       value: 1.8
@@ -7272,6 +7284,10 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 1.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6315563473743808332, guid: 1e1ccf42c2fc0f8409ba97f867fc1922, type: 3}
+      propertyPath: maxEmissive
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7054917516483157386, guid: 1e1ccf42c2fc0f8409ba97f867fc1922, type: 3}
       propertyPath: m_Name
       value: Light1
@@ -7364,6 +7380,10 @@ PrefabInstance:
     - target: {fileID: 346508389109415124, guid: f67e58b99fa37a14d990dcf7caad0499, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267183981276030302, guid: f67e58b99fa37a14d990dcf7caad0499, type: 3}
+      propertyPath: maxEmissive
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3952280693153811440, guid: f67e58b99fa37a14d990dcf7caad0499, type: 3}
       propertyPath: m_Name
@@ -9257,6 +9277,10 @@ PrefabInstance:
     - target: {fileID: 7883077759349352087, guid: 44bdbfa2991d8af46bf66a413e531781, type: 3}
       propertyPath: m_Size.z
       value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464978141646429347, guid: 44bdbfa2991d8af46bf66a413e531781, type: 3}
+      propertyPath: maxEmissive
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8969072994631345759, guid: 44bdbfa2991d8af46bf66a413e531781, type: 3}
       propertyPath: m_Name
