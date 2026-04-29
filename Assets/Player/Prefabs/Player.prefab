@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &769537956017713859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7001819345658373479}
+  m_Layer: 0
+  m_Name: CameraCointeiner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7001819345658373479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769537956017713859}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6659709577433708248}
+  m_Father: {fileID: 5016292643671319261}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1407674559814185379
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,11 +60,11 @@ Transform:
   m_GameObject: {fileID: 1407674559814185379}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.51, z: -0.09}
+  m_LocalPosition: {x: 0.009999999, y: 0.5100001, z: -0.09000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5016292643671319261}
+  m_Father: {fileID: 7001819345658373479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &3271176746380835021
 Camera:
@@ -172,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6659709577433708248}
+  - {fileID: 7001819345658373479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8297398276924044805
@@ -305,8 +337,20 @@ MonoBehaviour:
   staminaDrain: 1
   staminaRecovery: 0.2
   currentStamina: 0
+  canSprint: 1
   standCameraHeight: 0.8
   crouchCameraHeight: 0.8
+  canLook: 1
+  isHidingCloset: 0
+  isHidingTrunk: 0
+  isOnElevatedSurface: 0
+  interactionDistance: 3
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastOrigin: {fileID: 0}
+  pauseUI: {fileID: 0}
+  playerUI: {fileID: 0}
 --- !u!54 &3915708655909188308
 Rigidbody:
   m_ObjectHideFlags: 0

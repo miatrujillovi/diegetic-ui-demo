@@ -24,7 +24,7 @@ public class FPSController : MonoBehaviour
     public float staminaRecovery = 1.5f;
 
     public float currentStamina;
-    private bool canSprint = true;
+    public bool canSprint = true;
 
     [Header("Cámara")]
     public float standCameraHeight = 1.6f;
@@ -36,6 +36,11 @@ public class FPSController : MonoBehaviour
     public bool isHidingCloset = false;
     public bool isHidingTrunk = false;
     public bool isOnElevatedSurface = false;
+
+    [Header("Interacción Modular")]
+    public float interactionDistance = 3f;
+    public LayerMask interactableLayer;
+    public Transform raycastOrigin;
 
 
 
@@ -92,6 +97,8 @@ public class FPSController : MonoBehaviour
 
 
         input.Player.Pause.performed += ctx => TogglePause();
+
+        input.Player.Interact.performed += ctx => TryInteract();
     }
 
     void OnDisable()
@@ -121,6 +128,7 @@ public class FPSController : MonoBehaviour
 
     void Move()
     {
+
         bool isTryingToSprint = isSprinting && moveInput.y > 0 && canSprint && !isCrouching;
 
         float currentSpeed = isCrouching ? crouchSpeed : (isTryingToSprint ? sprintSpeed : speed);
@@ -128,7 +136,15 @@ public class FPSController : MonoBehaviour
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * currentSpeed * Time.deltaTime);
 
-      
+        // Detectar si se está moviendo
+        float inputMagnitude = new Vector2(moveInput.x, moveInput.y).magnitude;
+
+        // Normalizar velocidad (para que sprint llegue a 1)
+        float normalizedSpeed = isTryingToSprint ? inputMagnitude : inputMagnitude * 0.5f;
+
+        // Enviar al Animator
+        animator.SetFloat("Speed", normalizedSpeed);
+
     }
     void Look()
     {
@@ -146,6 +162,7 @@ public class FPSController : MonoBehaviour
 
     void Jump()
     {
+       
         if (isGrounded && !isCrouching)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -182,12 +199,42 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    void TryInteract()
+    {
+
+      
+        
+        // Si estamos pausados, no interactuar
+        if (Time.timeScale == 0f) return;
+
+        RaycastHit hit;
+        // Lanzamos el rayo desde el pivote de la cámara hacia adelante
+        if (Physics.Raycast(cameraPivot.position, cameraPivot.forward, out hit, interactionDistance, interactableLayer))
+        {
+            // Intentamos obtener el componente HideSpot que creamos antes
+            HideSpot spot = hit.collider.GetComponent<HideSpot>();
+            if (spot != null)
+            {
+                spot.Interactuar(this); // Nos pasamos a nosotros mismos como referencia
+                Debug.Log("Interactuando");
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (cameraPivot == null) return;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawRay(cameraPivot.position, cameraPivot.forward * interactionDistance);
+    }
 
 
 
 
-    // ANIMACIONES (BLEND TREE)
-    void UpdateAnimations()
+
+
+// ANIMACIONES (BLEND TREE)
+void UpdateAnimations()
     {
         float speedPercent = moveInput.magnitude;
 
