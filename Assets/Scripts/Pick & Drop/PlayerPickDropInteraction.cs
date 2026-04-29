@@ -78,16 +78,12 @@ public class PlayerPickDropInteraction : MonoBehaviour
         if (other.GetComponent<DropZone>() != null)
         {
             DebugManager.instance.Log("Left drop zone.. canceling action", activateDebugs, debugName);
-            if (other.GetComponent<PickUpObject>() != null)
-            {
-                /*if (!isHoldingObject && currentObject != null)
-                {
-                    onObjectInteract?.Invoke(currentObject, 0f, false);
-                }*/
-
+            //if (other.GetComponent<PickUpObject>() != null)
+            //{
                 CancelAction();
                 currentObject = null;
-            }
+                //currentZone = null;
+            //}
         }
     }
 
