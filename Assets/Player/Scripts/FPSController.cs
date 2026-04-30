@@ -42,6 +42,8 @@ public class FPSController : MonoBehaviour
     public LayerMask interactableLayer;
     public Transform raycastOrigin;
 
+    public PlayableDirector _playableDirector;
+
 
 
 
@@ -219,6 +221,9 @@ public class FPSController : MonoBehaviour
                 Debug.Log("Interactuando");
             }
         }
+
+    
+
     }
 
     void OnDrawGizmosSelected()
@@ -227,6 +232,8 @@ public class FPSController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawRay(cameraPivot.position, cameraPivot.forward * interactionDistance);
     }
+
+    
 
 
 
