@@ -370,6 +370,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &114076034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114076036}
+  - component: {fileID: 114076038}
+  - component: {fileID: 114076037}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114076036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114076034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114076037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114076034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843774393877230459fb28437fe86a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AmbientLoop
+  audioData: {fileID: 11400000, guid: 7a6343d1fa6e02848821dd3da038281e, type: 2}
+  playOnAwake: 1
+  is3D: 0
+--- !u!114 &114076038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114076034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbd702905a4bcd408396829a9532a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
 --- !u!1 &170337663
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +775,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 18.54
   m_Range: 8.584038
-  m_SpotAngle: 46.769836
+  m_SpotAngle: 56.42356
   m_InnerSpotAngle: 36.352192
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
@@ -5126,7 +5186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7282602995780926679, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
       propertyPath: type
@@ -5145,6 +5205,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: dd18b0d12153bc64abb9a3e554b9bc92, type: 3}
     - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
+      propertyPath: dataCama
+      value: 
+      objectReference: {fileID: 11400000, guid: 88297e5a12a5749438657692855d37e1, type: 2}
+    - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
       propertyPath: posPuerta
       value: 
       objectReference: {fileID: 1333523850}
@@ -5153,6 +5217,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 0b67a327c69b1d749a66d8cf763b2653, type: 3}
     - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
+      propertyPath: dataPuerta
+      value: 
+      objectReference: {fileID: 11400000, guid: 066e911d75a3577488ff5f792a0f8dc9, type: 2}
+    - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
       propertyPath: posVentana
       value: 
       objectReference: {fileID: 921491110}
@@ -5160,6 +5228,10 @@ PrefabInstance:
       propertyPath: clipVentana
       value: 
       objectReference: {fileID: 8300000, guid: 60625915c3857704cb3436b029a0bad6, type: 3}
+    - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
+      propertyPath: dataVentana
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bede4ed4dc57ab45ac60619690f77ee, type: 2}
     - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
       propertyPath: playerScript
       value: 
@@ -8430,3 +8502,4 @@ SceneRoots:
   - {fileID: 883178175}
   - {fileID: 1498056417}
   - {fileID: 187147407}
+  - {fileID: 114076036}

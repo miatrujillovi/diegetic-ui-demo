@@ -41,54 +41,60 @@ public class DemonState : IState
     {
         eventActive = true;
         currentEvent = Random.Range(0, 3);
-        AudioClip clipToPlay = null;
-        Transform posToPlay = null;
 
-        // 1. Asignamos el clip y la posición según el evento
+        AudioData dataToPlay = null;
+        Vector3 targetPosition = Vector3.zero;
+
+        // 1. Selección de datos modulares y posición
         switch (currentEvent)
         {
-            case 0:
-                clipToPlay = brain.clipVentana;
-                posToPlay = brain.posVentana;
+            case 0: // VENTANA
+                dataToPlay = brain.dataVentana;
+                targetPosition = brain.posVentana.position;
                 break;
-            case 1:
-                clipToPlay = brain.clipPuerta;
-                posToPlay = brain.posPuerta;
+            case 1: // PUERTA
+                dataToPlay = brain.dataPuerta;
+                targetPosition = brain.posPuerta.position;
                 break;
-            case 2:
-                clipToPlay = brain.clipCama;
-                posToPlay = brain.posCama;
+            case 2: // CAMA
+                dataToPlay = brain.dataCama;
+                targetPosition = brain.posCama.position;
                 break;
         }
 
-        if (clipToPlay != null && posToPlay != null)
+        if (dataToPlay != null)
         {
-            // 2. Reproducimos el sonido
-            AudioSource.PlayClipAtPoint(clipToPlay, posToPlay.position);
+            // 2. Obtenemos un clip aleatorio del AudioData para calcular el tiempo exacto
+            AudioClip selectedClip = dataToPlay.GetRandomClip();
 
-            // 3. Iniciamos la espera: Duración del audio + Gracia
-            float totalWaitTime = clipToPlay.length + gracePeriod;
-            brain.StartCoroutine(CheckPlayerSafety(totalWaitTime));
+            if (selectedClip != null)
+            {
+                // 3. Reproducción a través del AudioManager modular
+                AudioManager.Instance.PlaySound3D(dataToPlay, targetPosition);
 
-            Debug.Log($"Evento {currentEvent} iniciado. Esperando {totalWaitTime} segundos.");
+                // 4. Iniciamos la espera: Duración del clip específico + Tiempo de gracia
+                float totalWaitTime = selectedClip.length + gracePeriod;
+                brain.StartCoroutine(CheckPlayerSafety(totalWaitTime));
+
+                Debug.Log($"Evento {currentEvent} ({dataToPlay.name}) iniciado. Esperando {totalWaitTime}s.");
+            }
         }
     }
 
     private IEnumerator CheckPlayerSafety(float waitTime)
     {
-        // Espera el tiempo total (audio + 3 segundos)
         yield return new WaitForSeconds(waitTime);
 
         bool isSafe = false;
 
-        // 4. Chequeo de seguridad
+        // 5. Verificación de los estados del FPSController
         if (currentEvent == 0 && brain.playerScript.isHidingCloset) isSafe = true;
         else if (currentEvent == 1 && brain.playerScript.isHidingTrunk) isSafe = true;
         else if (currentEvent == 2 && brain.playerScript.isOnElevatedSurface) isSafe = true;
 
         if (isSafe)
         {
-            Debug.Log("Sobreviviste al ataque.");
+            Debug.Log("Sobreviviste al ataque. El demonio se retira.");
             eventActive = false;
             ResetTimer();
         }
@@ -103,6 +109,7 @@ public class DemonState : IState
         Debug.Log("EL MONSTRUO TE ATRAPÓ");
         if (brain.playerScript != null)
         {
+            // Desactiva al jugador de la escena
             brain.playerScript.gameObject.SetActive(false);
         }
     }
