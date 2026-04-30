@@ -3,9 +3,17 @@ using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Panel UI Settings")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject creditsMenu;
+    [Space]
+    [Header("Player Settings")]
+    [SerializeField] private FPSController playerController;
+    [SerializeField] private PlayerPickDropInteraction pickDropScript;
+    [Space]
+    [Header("Camera Settings")]
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera menuCamera;
     [Space]
     [Header("First Selected Options")]
     [SerializeField] private GameObject mainMenuFirst;
@@ -29,6 +37,8 @@ public class MainMenuManager : MonoBehaviour
         creditsMenu.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(null);
+
+        DeactivateMainMenuMode();
     }
 
     public void OpenMainMenu()
@@ -37,6 +47,8 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(mainMenuFirst);
+
+        ActivateMainMenuMode();
     }
 
     public void OpenCreditsMenu()
@@ -53,4 +65,26 @@ public class MainMenuManager : MonoBehaviour
     }
 
     #endregion Button Options
+
+    private void DeactivateMainMenuMode()
+    {
+        //Player Movement/Interactions
+        playerController.enabled = true;
+        pickDropScript.enabled = true;
+
+        //Change Camera
+        mainCamera.enabled = true;
+        menuCamera.enabled = false;
+    }
+
+    private void ActivateMainMenuMode()
+    {
+        //Player Movement/Interactions
+        playerController.enabled = false;
+        pickDropScript.enabled = false;
+
+        //Change Camera
+        mainCamera.enabled = false;
+        menuCamera.enabled = true;
+    }
 }
