@@ -17,11 +17,15 @@ public class EnemyBrain : MonoBehaviour
     public PatrolPath patrolPath;
 
 
-    [Header("Demon Audios")]
+    [Header("Demon Audio Settings (Modular)")]
     public Transform posVentana;
     public Transform posPuerta;
     public Transform posCama;
-    public AudioClip clipVentana, clipPuerta, clipCama;
+
+    // Cambiamos AudioClip por AudioData para usar el nuevo sistema
+    public AudioData dataVentana;
+    public AudioData dataPuerta;
+    public AudioData dataCama;
 
 
 
@@ -46,6 +50,13 @@ public class EnemyBrain : MonoBehaviour
 
     void Start()
     {
+
+        // Validamos que el AudioManager exista en la escena para evitar errores
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("No se encontró el AudioManager en la escena. Asegúrate de tener un objeto con ese script.");
+        }
+
         switch (type)
         {
             case EnemyType.Patrol:

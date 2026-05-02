@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class FPSController : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class FPSController : MonoBehaviour
     public float interactionDistance = 3f;
     public LayerMask interactableLayer;
     public Transform raycastOrigin;
+
+    public PlayableDirector _playableDirector;
 
 
 
@@ -219,6 +222,9 @@ public class FPSController : MonoBehaviour
                 Debug.Log("Interactuando");
             }
         }
+
+    
+
     }
 
     void OnDrawGizmosSelected()
@@ -227,6 +233,8 @@ public class FPSController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawRay(cameraPivot.position, cameraPivot.forward * interactionDistance);
     }
+
+    
 
 
 
