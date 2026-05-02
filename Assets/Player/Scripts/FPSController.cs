@@ -111,11 +111,17 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        CheckGround();
-        Move();
+      
         Look();
-        ApplyGravity();
- 
+
+
+        if (controller.enabled)
+        {
+            CheckGround();
+            Move();
+            ApplyGravity();
+        }
+
         UpdateAnimations();
     }
 
