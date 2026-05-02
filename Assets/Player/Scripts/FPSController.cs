@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class FPSController : MonoBehaviour
 {
