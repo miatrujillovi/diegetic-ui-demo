@@ -928,6 +928,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf2bd055f9c5cf469883634a73c91d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNavigationNotifier
+--- !u!1001 &255444396
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 936576437293620436, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_Name
+      value: == PAUSE ZONE ==
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.913086
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.62088025
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.525595
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826037804563528366, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 367ad8787550c2b4a93ce7fdb75ee79a, type: 3}
 --- !u!1 &260391068
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,6 +4199,7 @@ GameObject:
   - component: {fileID: 831939407}
   - component: {fileID: 831939406}
   - component: {fileID: 831939405}
+  - component: {fileID: 831939408}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -4249,6 +4307,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831939403}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &831939408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831939403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6663ad3c5eb67b746bda0fb453381646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropZone
+  light1DropPoint: {fileID: 1592103079}
+  light2DropPoint: {fileID: 1219768301}
+  light3DropPoint: {fileID: 1996239464}
+  light4DropPoint: {fileID: 614656539}
+  bibleDropPoint: {fileID: 1712001094}
+  swordDropPoint: {fileID: 863617484}
 --- !u!1 &837560592
 GameObject:
   m_ObjectHideFlags: 0
@@ -11077,3 +11153,4 @@ SceneRoots:
   - {fileID: 382710039}
   - {fileID: 215052293}
   - {fileID: 1194330247}
+  - {fileID: 255444396}
