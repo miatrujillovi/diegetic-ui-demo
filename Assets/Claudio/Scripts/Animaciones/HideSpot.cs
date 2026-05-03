@@ -8,6 +8,10 @@ public class HideSpot : MonoBehaviour
     [Tooltip("La cámara que vive DENTRO del clóset")]
     public Camera camaraDelCloset;
 
+    [Header("Tiempos")]
+    [Tooltip("Segundos que tarda en abrirse la puerta antes de regresarte el control")]
+    public float tiempoEsperaSalida = 2.0f; // <--- ¡NUEVA VARIABLE!
+
     [Header("Datos")]
     public HideSpotData datos;
 
@@ -25,21 +29,18 @@ public class HideSpot : MonoBehaviour
         isAnimating = true;
         isPlayerInside = !isPlayerInside;
 
-        // Buscamos la cámara del jugador (la que está dentro de CameraCointelner)
         Camera camaraDelPlayer = player.cameraPivot.GetComponentInChildren<Camera>();
 
-        // 1. Bloqueamos al jugador (su cuerpo invisible se queda quieto afuera)
+        // Bloqueamos al jugador
         player.canLook = false;
         player.GetComponent<CharacterController>().enabled = false;
 
         if (isPlayerInside)
         {
             // --- ENTRANDO ---
-            // Apagamos los "ojos" del jugador y encendemos los del clóset
             camaraDelPlayer.gameObject.SetActive(false);
             camaraDelCloset.gameObject.SetActive(true);
 
-            // Disparamos tu animación normal
             animatorCloset.SetTrigger(datos.triggerAnimacion);
         }
         else
@@ -47,9 +48,8 @@ public class HideSpot : MonoBehaviour
             // --- SALIENDO ---
             animatorCloset.SetTrigger(datos.triggerSalida);
 
-            // Opcional: Esperar un segundo a que termine la animación de abrir la puerta
-            // antes de regresarte a tu cuerpo. Ajusta este número según tu animación.
-            yield return new WaitForSeconds(1f);
+            // ¡AQUÍ ESTÁ LA MAGIA! Ahora espera el tiempo que tú le digas en el Inspector
+            yield return new WaitForSeconds(tiempoEsperaSalida);
 
             // Apagamos el clóset y encendemos al jugador
             camaraDelCloset.gameObject.SetActive(false);
@@ -62,7 +62,6 @@ public class HideSpot : MonoBehaviour
 
         if (datos != null) ActualizarEstadoLogico(player, isPlayerInside);
 
-        // Evitar doble clic accidental
         yield return new WaitForSeconds(0.5f);
         isAnimating = false;
     }

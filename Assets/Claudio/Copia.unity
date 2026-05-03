@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HideSpot
   animatorCloset: {fileID: 0}
   camaraDelCloset: {fileID: 0}
+  tiempoEsperaSalida: 2
   datos: {fileID: 11400000, guid: 85a50ce6b707e664297ac06d64722fe0, type: 2}
 --- !u!1 &51051665
 GameObject:
@@ -559,110 +560,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421276542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &174773679
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 174773680}
-  - component: {fileID: 174773681}
-  m_Layer: 0
-  m_Name: TimeLines Salir Cajon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &174773680
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174773679}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2006989125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &174773681
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174773679}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: bcb67cd76d81d5544a1ee2da14f67b21, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -1026949099570578926, guid: bcb67cd76d81d5544a1ee2da14f67b21, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
---- !u!1 &181109299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 181109300}
-  - component: {fileID: 181109301}
-  m_Layer: 0
-  m_Name: TimeLines SubirCama
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &181109300
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181109299}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2006989125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &181109301
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181109299}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 27feea3b9d79ea74ea1b681fcf5bebef, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -1026949099570578926, guid: bcb67cd76d81d5544a1ee2da14f67b21, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -5586245381924271073, guid: 27feea3b9d79ea74ea1b681fcf5bebef, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &185296849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,63 +1497,6 @@ Transform:
   - {fileID: 1247280137}
   m_Father: {fileID: 1435844872}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!1 &485420693
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 485420695}
-  - component: {fileID: 485420694}
-  m_Layer: 0
-  m_Name: TimeLines Puerta Abrir
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!320 &485420694
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485420693}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: edb8a7b26437b6f4c9997bd74c90b2d0, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -3614818591907533070, guid: 92e1f24027b2b7447b95e3f5caa9788f, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7833705139388901602, guid: 92e1f24027b2b7447b95e3f5caa9788f, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7846150070235142577, guid: edb8a7b26437b6f4c9997bd74c90b2d0, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -5771715101101825394, guid: edb8a7b26437b6f4c9997bd74c90b2d0, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
---- !u!4 &485420695
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485420693}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2006989125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &502916706
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,6 +3432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HideSpot
   animatorCloset: {fileID: 1087512469}
   camaraDelCloset: {fileID: 706568173}
+  tiempoEsperaSalida: 3
   datos: {fileID: 11400000, guid: 97792dec02af3dd48882d351d4509537, type: 2}
 --- !u!65 &758421028
 BoxCollider:
@@ -4563,57 +4404,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1763909705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &899022787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 899022788}
-  - component: {fileID: 899022789}
-  m_Layer: 0
-  m_Name: TimeLines Entrar Cajon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &899022788
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899022787}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2006989125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &899022789
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899022787}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 65242be4babe18f46b64bcff1127d35a, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 886056846077105317, guid: 65242be4babe18f46b64bcff1127d35a, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &921491109
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,6 +4596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HideSpot
   animatorCloset: {fileID: 2130721300}
   camaraDelCloset: {fileID: 1763909708}
+  tiempoEsperaSalida: 3
   datos: {fileID: 11400000, guid: 85a50ce6b707e664297ac06d64722fe0, type: 2}
 --- !u!65 &958877613
 BoxCollider:
@@ -7251,63 +7042,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 50.598, z: 0}
---- !u!1 &1369233681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1369233682}
-  - component: {fileID: 1369233683}
-  m_Layer: 0
-  m_Name: TimeLines Cerrar Puerta
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1369233682
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369233681}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2006989125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &1369233683
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369233681}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 92e1f24027b2b7447b95e3f5caa9788f, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -3614818591907533070, guid: 92e1f24027b2b7447b95e3f5caa9788f, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7833705139388901602, guid: 92e1f24027b2b7447b95e3f5caa9788f, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7846150070235142577, guid: edb8a7b26437b6f4c9997bd74c90b2d0, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -5771715101101825394, guid: edb8a7b26437b6f4c9997bd74c90b2d0, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &1387527774
 GameObject:
   m_ObjectHideFlags: 0
@@ -7685,59 +7419,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477643896}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1480366421
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1480366422}
-  - component: {fileID: 1480366423}
-  m_Layer: 0
-  m_Name: TimeLines BajarCama
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1480366422
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480366421}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2006989125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &1480366423
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480366421}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 7bc37291219e38441a871e1ed8bd50c4, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -1026949099570578926, guid: bcb67cd76d81d5544a1ee2da14f67b21, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 1042220414606249554, guid: 7bc37291219e38441a871e1ed8bd50c4, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &1488399018
 GameObject:
   m_ObjectHideFlags: 0
@@ -8687,6 +8368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HideSpot
   animatorCloset: {fileID: 513373484}
   camaraDelCloset: {fileID: 1584296222}
+  tiempoEsperaSalida: 7
   datos: {fileID: 11400000, guid: bb20b46309ff67f48bfce62ea27c4d07, type: 2}
 --- !u!65 &1637656206
 BoxCollider:
@@ -9900,43 +9582,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 876715251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2006989124
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2006989125}
-  m_Layer: 0
-  m_Name: TimeLines
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2006989125
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006989124}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 485420695}
-  - {fileID: 1369233682}
-  - {fileID: 899022788}
-  - {fileID: 174773680}
-  - {fileID: 181109300}
-  - {fileID: 1480366422}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010489103
 GameObject:
   m_ObjectHideFlags: 0
@@ -10520,6 +10165,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 513373485}
     m_Modifications:
+    - target: {fileID: 2288944886501668525, guid: 5f5827c84d192114f98af8f86f7dbbdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8230927538037429029, guid: 5f5827c84d192114f98af8f86f7dbbdf, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.012562061
@@ -11421,10 +11070,10 @@ SceneRoots:
   - {fileID: 1107950277}
   - {fileID: 260391072}
   - {fileID: 527878559}
-  - {fileID: 999109004}
   - {fileID: 1087512470}
   - {fileID: 513373485}
   - {fileID: 2130721299}
+  - {fileID: 999109004}
   - {fileID: 1321816573}
   - {fileID: 2082139156}
   - {fileID: 2019040354}
@@ -11446,4 +11095,3 @@ SceneRoots:
   - {fileID: 1654855823}
   - {fileID: 1087151566}
   - {fileID: 1567292658}
-  - {fileID: 2006989125}
