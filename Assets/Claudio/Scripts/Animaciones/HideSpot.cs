@@ -1,37 +1,69 @@
 using UnityEngine;
+using System.Collections;
 
 public class HideSpot : MonoBehaviour
 {
+    [Header("Referencias del Mueble")]
+    public Animator animatorCloset;
+    [Tooltip("La cámara que vive DENTRO del clóset")]
+    public Camera camaraDelCloset;
+
+    [Header("Tiempos")]
+    [Tooltip("Segundos que tarda en abrirse la puerta antes de regresarte el control")]
+    public float tiempoEsperaSalida = 2.0f; // <--- ¡NUEVA VARIABLE!
+
+    [Header("Datos")]
     public HideSpotData datos;
+
     private bool isPlayerInside = false;
+    private bool isAnimating = false;
 
     public void Interactuar(FPSController player)
     {
-        Animator anim = player.GetComponentInChildren<Animator>();
+        if (isAnimating) return;
+        StartCoroutine(RutinaCambioCamara(player));
+    }
 
-        if (!isPlayerInside)
+    private IEnumerator RutinaCambioCamara(FPSController player)
+    {
+        isAnimating = true;
+        isPlayerInside = !isPlayerInside;
+
+        Camera camaraDelPlayer = player.cameraPivot.GetComponentInChildren<Camera>();
+
+        // Bloqueamos al jugador
+        player.canLook = false;
+        player.GetComponent<CharacterController>().enabled = false;
+
+        if (isPlayerInside)
         {
-            // --- ENTRAR AL ESCONDITE ---
-            isPlayerInside = true;
-            anim.SetTrigger(datos.triggerAnimacion);
+            // --- ENTRANDO ---
+            camaraDelPlayer.gameObject.SetActive(false);
+            camaraDelCloset.gameObject.SetActive(true);
 
-            // Bloqueamos el movimiento y la vista
-            player.canLook = false;
-            // Desactivamos el CharacterController para que no interfiera con la animación
-            player.GetComponent<CharacterController>().enabled = false;
+            animatorCloset.SetTrigger(datos.triggerAnimacion);
         }
         else
         {
-            // --- SALIR DEL ESCONDITE ---
-            isPlayerInside = false;
-            anim.SetTrigger(datos.triggerSalida);
+            // --- SALIENDO ---
+            animatorCloset.SetTrigger(datos.triggerSalida);
 
-            // Devolvemos el control
+            // ¡AQUÍ ESTÁ LA MAGIA! Ahora espera el tiempo que tú le digas en el Inspector
+            yield return new WaitForSeconds(tiempoEsperaSalida);
+
+            // Apagamos el clóset y encendemos al jugador
+            camaraDelCloset.gameObject.SetActive(false);
+            camaraDelPlayer.gameObject.SetActive(true);
+
+            // Devolvemos el control físico
             player.GetComponent<CharacterController>().enabled = true;
             player.canLook = true;
         }
 
-        ActualizarEstadoLogico(player, isPlayerInside);
+        if (datos != null) ActualizarEstadoLogico(player, isPlayerInside);
+
+        yield return new WaitForSeconds(0.5f);
+        isAnimating = false;
     }
 
     private void ActualizarEstadoLogico(FPSController player, bool estado)
