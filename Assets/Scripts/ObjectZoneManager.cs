@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectZoneManager : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class ObjectZoneManager : MonoBehaviour
         if (collectedObjects.Count == System.Enum.GetValues(typeof(RitualObjects)).Length)
         {
             DebugManager.instance.Log("Ritual Completed!!", activateDebugs, debugName);
+            SceneManager.LoadScene("AnimacionFinal");
         }
     }
 }
