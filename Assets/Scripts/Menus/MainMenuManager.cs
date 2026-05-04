@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Video;
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine.InputSystem;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -17,10 +18,8 @@ public class MainMenuManager : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera menuCamera;
-
-    [Tooltip("Punto vacío frente a la tele para ver el video")]
-    [SerializeField] private Transform puntoDeAcercamiento;
-
+    [SerializeField] private int menuFOV = 40;
+    [SerializeField] private int gameplayFOV = 60;
     [Space]
     [Header("First Selected Options")]
     [SerializeField] private GameObject mainMenuFirst;
@@ -29,6 +28,9 @@ public class MainMenuManager : MonoBehaviour
     [Header("World Video & Event Settings")]
     [SerializeField] private VideoPlayer inWorldVideoPlayer;
     [SerializeField] private GameObject aiObject;
+    [Space]
+    [Header("Input Settings")]
+    [SerializeField] private InputActionReference interactAction;
 
     public static Action onMoveUp;
     public static Action onMoveDown;
@@ -36,6 +38,7 @@ public class MainMenuManager : MonoBehaviour
     public static Action onPlay;
 
     private GameObject lastSelected;
+    private bool isPlaying = false;
 
     private void Awake()
     {
@@ -45,16 +48,22 @@ public class MainMenuManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void OnEnable()
+    {
+        inWorldVideoPlayer.loopPointReached += OnVideoFinished;
+    }
+
+    private void OnDisable()
+    {
+        inWorldVideoPlayer.loopPointReached -= OnVideoFinished;
+    }
+
     private void Start()
     {
         // 1. Bloqueamos al jugador apenas carga la escena
-        playerController.enabled = false;
-        pickDropScript.enabled = false;
+        ActivateMainMenuMode();
 
         OpenMainMenu();
-
-        // 2. INICIA EL JUEGO: Hacemos el zoom automático hacia la tele
-        ZoomInicialHaciaLaTele().Forget();
 
         if (inWorldVideoPlayer != null)
         {
@@ -80,6 +89,18 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
+        //Skip Tutorial
+        if (isPlaying)
+        {
+            if (interactAction.action.triggered)
+            {
+                inWorldVideoPlayer.SetDirectAudioVolume(0, 0.5f);
+                TransitionToGameplay().Forget();
+                aiObject.SetActive(true);
+            }
+        }
+
+        //Always maintains something on the last menu Selection
         if (mainMenu.activeSelf || creditsMenu.activeSelf)
         {
             GameObject current = EventSystem.current.currentSelectedGameObject;
@@ -102,16 +123,8 @@ public class MainMenuManager : MonoBehaviour
         creditsMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
 
-        inWorldVideoPlayer.gameObject.SetActive(true);
+        DeactivateMainMenuMode();
 
-        // 3. LE DAS PLAY: Arranca el video (la cámara ya está frente a la tele y se mantiene ahí)
-        if (inWorldVideoPlayer != null)
-        {
-            inWorldVideoPlayer.Play();
-        }
-
-        // 4. Inicia la secuencia que espera el fin del video para alejarte
-        SecuenciaVideoYDarControl().Forget();
         onPlay?.Invoke();
     }
 
@@ -135,70 +148,83 @@ public class MainMenuManager : MonoBehaviour
     }
     #endregion Button Options
 
-    #region Secuencias de Animación de Cámara
-
-    private async UniTask ZoomInicialHaciaLaTele()
+    #region Main Menu Mode
+    private void DeactivateMainMenuMode()
     {
-        if (puntoDeAcercamiento == null) return;
-
-        float duration = 2.0f; // Segundos que tarda en acercarse al abrir el juego
-        float time = 0f;
-
-        // Guarda desde dónde empieza (donde sea que hayas dejado la menuCamera en Unity)
-        Vector3 startPos = menuCamera.transform.position;
-        Quaternion startRot = menuCamera.transform.rotation;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            float t = time / duration;
-            t = t * t * (3f - 2f * t); // Suavizado curvo
-
-            menuCamera.transform.position = Vector3.Lerp(startPos, puntoDeAcercamiento.position, t);
-            menuCamera.transform.rotation = Quaternion.Slerp(startRot, puntoDeAcercamiento.rotation, t);
-
-            await UniTask.Yield();
-        }
-    }
-
-    private async UniTask SecuenciaVideoYDarControl()
-    {
-        // PASO A: ESPERAR A QUE EL VIDEO TERMINE
-        if (inWorldVideoPlayer != null)
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-            await UniTask.WaitUntil(() => !inWorldVideoPlayer.isPlaying);
-        }
-
-        // PASO B: EL VIDEO ACABÓ -> ZOOM OUT (Viaje a la cabeza del jugador)
-        float duration = 1.5f;
-        float time = 0f;
-
-        Vector3 startPos = menuCamera.transform.position;
-        Quaternion startRot = menuCamera.transform.rotation;
-
-        Vector3 targetPos = mainCamera.transform.position;
-        Quaternion targetRot = mainCamera.transform.rotation;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            float t = time / duration;
-            t = t * t * (3f - 2f * t);
-
-            menuCamera.transform.position = Vector3.Lerp(startPos, targetPos, t);
-            menuCamera.transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
-
-            await UniTask.Yield();
-        }
-
-        // PASO C: TE DA EL CONTROL
-        mainCamera.gameObject.SetActive(true);
-        menuCamera.gameObject.SetActive(false);
-
+        //Player Movement/Interactions
         playerController.enabled = true;
         pickDropScript.enabled = true;
+
+        inWorldVideoPlayer.gameObject.SetActive(true);
+
+        // 3. LE DAS PLAY: Arranca el video (la cámara ya está frente a la tele y se mantiene ahí)
+        if (inWorldVideoPlayer != null)
+        {
+            inWorldVideoPlayer.Play();
+            isPlaying = true;
+        }
     }
 
-    #endregion Secuencias de Animación de Cámara
+    //Transitions to gameplay once the video is over (if it wasnt skipped)
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        isPlaying = false;
+
+        // Call your transition
+        TransitionToGameplay().Forget();
+    }
+
+    private void ActivateMainMenuMode()
+    {
+        //Player Movement/Interactions
+        playerController.enabled = false;
+        pickDropScript.enabled = false;
+    }
+
+    private async UniTask TransitionToGameplay()
+    {
+        float duration = 1f;
+
+        //1.- Change the FOV
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+
+            t = t * t * (3f - 2f * t);
+
+            menuCamera.fieldOfView = Mathf.Lerp(menuFOV, gameplayFOV, t);
+
+            await UniTask.Yield();
+        }
+
+        //2.- Rotate X Axis
+        float startX = menuCamera.transform.eulerAngles.x;
+        float targetX = 0f;
+
+        time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+
+            t = t * t * (3f - 2f * t);
+
+            float newX = Mathf.LerpAngle(startX, targetX, t);
+
+            Vector3 angles = menuCamera.transform.eulerAngles;
+            angles.x = newX;
+            menuCamera.transform.eulerAngles = angles;
+
+            await UniTask.Yield();
+        }
+
+        //3.- Switch Cameras
+        mainCamera.gameObject.SetActive(true);
+        menuCamera.gameObject.SetActive(false);
+    }
+
+    #endregion Main Menu Mode
 }
