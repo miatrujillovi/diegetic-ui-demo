@@ -69,7 +69,16 @@ public class HideSpot : MonoBehaviour
     private void ActualizarEstadoLogico(FPSController player, bool estado)
     {
         if (datos.nombreEscondite == "Closet") player.isHidingCloset = estado;
+        if (datos.nombreEscondite == "Closet") player.isHidingTrunk = estado;
+        if (datos.nombreEscondite == "Closet") player.isOnElevatedSurface = estado;
+
+        if (datos.nombreEscondite == "Baul") player.isHidingCloset = estado;
         if (datos.nombreEscondite == "Baul") player.isHidingTrunk = estado;
+        if (datos.nombreEscondite == "Baul") player.isOnElevatedSurface = estado;
+
+
+        if (datos.nombreEscondite == "Silla") player.isHidingCloset = estado;
+        if (datos.nombreEscondite == "Silla") player.isHidingTrunk = estado;
         if (datos.nombreEscondite == "Silla") player.isOnElevatedSurface = estado;
     }
 }
