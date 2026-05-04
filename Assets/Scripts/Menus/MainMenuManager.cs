@@ -35,6 +35,8 @@ public class MainMenuManager : MonoBehaviour
     public static Action onSubmit;
     public static Action onPlay;
 
+    private GameObject lastSelected;
+
     private void Awake()
     {
         // Nota: Si usas el mouse para dar clic al botón "Play", necesitas que sea visible.
@@ -73,6 +75,23 @@ public class MainMenuManager : MonoBehaviour
         if (inWorldVideoPlayer != null)
         {
             inWorldVideoPlayer.loopPointReached -= ActivarIA;
+        }
+    }
+
+    private void Update()
+    {
+        if (mainMenu.activeSelf || creditsMenu.activeSelf)
+        {
+            GameObject current = EventSystem.current.currentSelectedGameObject;
+
+            if (current != null)
+            {
+                lastSelected = current;
+            }
+            else if (lastSelected != null)
+            {
+                EventSystem.current.SetSelectedGameObject(lastSelected);
+            }
         }
     }
 
