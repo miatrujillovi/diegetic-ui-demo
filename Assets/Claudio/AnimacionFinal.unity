@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 999109004}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232367568}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c744050c7f4446b45b810b114f75b148, type: 3}
   m_Name: 
@@ -5273,6 +5273,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637724992929162275, guid: c2842dfac85e67d43af85dcf978ce6fb, type: 3}
       propertyPath: canSprint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637724992929162275, guid: c2842dfac85e67d43af85dcf978ce6fb, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4637724992929162275, guid: c2842dfac85e67d43af85dcf978ce6fb, type: 3}

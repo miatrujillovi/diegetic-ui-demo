@@ -13,6 +13,10 @@ public class EnemyBrain : MonoBehaviour
     public Transform player;
     public FPSController playerScript;
 
+    public GameObject loseTimeLine;
+    public GameObject Pluche;
+
+
     [Header("Patrulla")]
     public PatrolPath patrolPath;
 

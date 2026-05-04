@@ -111,6 +111,9 @@ public class DemonState : IState
         {
             // Desactiva al jugador de la escena
             brain.playerScript.gameObject.SetActive(false);
+            brain.loseTimeLine.gameObject.SetActive(true);
+            brain.Pluche.gameObject.SetActive(true);
+
         }
     }
 
