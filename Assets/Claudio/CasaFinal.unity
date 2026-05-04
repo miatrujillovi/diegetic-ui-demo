@@ -7399,7 +7399,7 @@ Animator:
   m_GameObject: {fileID: 1232367568}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0d69b8cd34371724699e38feccdf1905, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1b1af626a413ed042ae39cf45099d2d0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7966,6 +7966,10 @@ PrefabInstance:
       propertyPath: dataVentana
       value: 
       objectReference: {fileID: 11400000, guid: 4bede4ed4dc57ab45ac60619690f77ee, type: 2}
+    - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
+      propertyPath: dataRetirada
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d9719787b28c3d459055eff4e60fd8e, type: 2}
     - target: {fileID: 8679232466088420322, guid: 6eeca4e4c2a4b4741afa831648b1f79c, type: 3}
       propertyPath: loseTimeLine
       value: 

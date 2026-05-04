@@ -8,8 +8,11 @@ public class DemonState : IState
     private bool eventActive = false;
     private int currentEvent = 0;
 
-    private float gracePeriod = 3.0f; // Los 3 segundos después del audio
-    private float timeBetweenEvents = 30.0f;
+    private float gracePeriod = 3.0f; 
+    private float timeBetweenEvents = 20.0f; // Modificado para que tengas respiro
+
+    // NUEVA VARIABLE: Para recordar en que puerta/ventana estaba el monstruo
+    private Vector3 ultimaPosicionAtaque; 
 
     public DemonState(EnemyBrain brain)
     {
@@ -45,7 +48,6 @@ public class DemonState : IState
         AudioData dataToPlay = null;
         Vector3 targetPosition = Vector3.zero;
 
-        // 1. Selección de datos modulares y posición
         switch (currentEvent)
         {
             case 0: // VENTANA
@@ -64,15 +66,15 @@ public class DemonState : IState
 
         if (dataToPlay != null)
         {
-            // 2. Obtenemos un clip aleatorio del AudioData para calcular el tiempo exacto
             AudioClip selectedClip = dataToPlay.GetRandomClip();
 
             if (selectedClip != null)
             {
-                // 3. Reproducción a través del AudioManager modular
+                // Guardamos la posiciÃ³n del ataque en nuestra nueva variable
+                ultimaPosicionAtaque = targetPosition; 
+
                 AudioManager.Instance.PlaySound3D(dataToPlay, targetPosition);
 
-                // 4. Iniciamos la espera: Duración del clip específico + Tiempo de gracia
                 float totalWaitTime = selectedClip.length + gracePeriod;
                 brain.StartCoroutine(CheckPlayerSafety(totalWaitTime));
 
@@ -83,11 +85,11 @@ public class DemonState : IState
 
     private IEnumerator CheckPlayerSafety(float waitTime)
     {
+        // AQUI ES DONDE TRANSCURRE EL TIEMPO DE ATAQUE
         yield return new WaitForSeconds(waitTime);
 
         bool isSafe = false;
 
-        // 5. Verificación de los estados del FPSController
         if (currentEvent == 0 && brain.playerScript.isHidingCloset) isSafe = true;
         else if (currentEvent == 1 && brain.playerScript.isHidingTrunk) isSafe = true;
         else if (currentEvent == 2 && brain.playerScript.isOnElevatedSurface) isSafe = true;
@@ -95,6 +97,14 @@ public class DemonState : IState
         if (isSafe)
         {
             Debug.Log("Sobreviviste al ataque. El demonio se retira.");
+
+            // >>> NUEVO: REPRODUCIR SONIDO AL SOBREVIVIR <<<
+            if (brain.dataRetirada != null)
+            {
+                // Reproduce el sonido de que se va, exactamente en la ventana o puerta donde atacÃ³
+                AudioManager.Instance.PlaySound3D(brain.dataRetirada, ultimaPosicionAtaque);
+            }
+
             eventActive = false;
             ResetTimer();
         }
@@ -106,14 +116,12 @@ public class DemonState : IState
 
     private void KillPlayer()
     {
-        Debug.Log("EL MONSTRUO TE ATRAPÓ");
+        Debug.Log("EL MONSTRUO TE ATRAPÃ“");
         if (brain.playerScript != null)
         {
-            // Desactiva al jugador de la escena
-            brain.playerScript.gameObject.SetActive(false);
+             brain.playerScript.gameObject.SetActive(false);
             brain.loseTimeLine.gameObject.SetActive(true);
             brain.Pluche.gameObject.SetActive(true);
-
         }
     }
 
