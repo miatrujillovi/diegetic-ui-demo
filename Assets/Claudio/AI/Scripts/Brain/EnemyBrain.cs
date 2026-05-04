@@ -30,6 +30,7 @@ public class EnemyBrain : MonoBehaviour
     public AudioData dataVentana;
     public AudioData dataPuerta;
     public AudioData dataCama;
+    public AudioData dataRetirada; 
 
 
 
