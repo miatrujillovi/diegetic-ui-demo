@@ -9,7 +9,7 @@ public class DemonState : IState
     private int currentEvent = 0;
 
     private float gracePeriod = 3.0f; // Los 3 segundos después del audio
-    private float timeBetweenEvents = 5.0f;
+    private float timeBetweenEvents = 30.0f;
 
     public DemonState(EnemyBrain brain)
     {
