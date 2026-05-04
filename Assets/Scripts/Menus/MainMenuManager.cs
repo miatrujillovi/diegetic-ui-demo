@@ -83,6 +83,8 @@ public class MainMenuManager : MonoBehaviour
         creditsMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
 
+        inWorldVideoPlayer.gameObject.SetActive(true);
+
         // 3. LE DAS PLAY: Arranca el video (la cámara ya está frente a la tele y se mantiene ahí)
         if (inWorldVideoPlayer != null)
         {
